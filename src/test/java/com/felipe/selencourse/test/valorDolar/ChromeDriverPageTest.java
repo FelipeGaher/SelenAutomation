@@ -22,7 +22,7 @@ import com.felipe.selencourse.test.context.TestContext;
  * @author Niemand
  *
  */
-public class ValorDolarPageTest extends TestContext {
+public class ChromeDriverPageTest extends TestContext {
 
 	private static ChromeDriverService service;
 
@@ -38,16 +38,25 @@ public class ValorDolarPageTest extends TestContext {
 		service.start();
 	}
 	
+	/**
+	 * Stop the Chrome driver service after the test suite is all tested.
+	 */
 	@AfterClass
 	public static void createAndStopService() {
 		service.stop();
 	}
 
+	/**
+	 * Instance the WebDriver before every test case.
+	 */
 	@Before
 	public void createDriver() {
 		driver = new RemoteWebDriver(service.getUrl(), DesiredCapabilities.chrome());
 	}
-
+	
+	/**
+	 * Close the WebDriver (Chrome) after every test case.
+	 */
 	@After
 	public void quitDriver() {
 		driver.quit();
@@ -55,7 +64,6 @@ public class ValorDolarPageTest extends TestContext {
 
 	/**
 	 * Example N1
-	 * Ejemplo N1
 	 * @throws InterruptedException
 	 */
 	@Test
